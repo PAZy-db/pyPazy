@@ -1,0 +1,10 @@
+# PatchedDataset
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `protein`                                                                                | List[[components.ProteinSequenceInput](../../models/components/proteinsequenceinput.md)] | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `accession`                                                                              | *Optional[str]*                                                                          | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `database`                                                                               | *Optional[str]*                                                                          | :heavy_minus_sign:                                                                       | N/A                                                                                      |

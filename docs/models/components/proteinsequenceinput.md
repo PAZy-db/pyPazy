@@ -1,0 +1,13 @@
+# ProteinSequenceInput
+
+
+## Fields
+
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `organisms`                                                                    | List[[components.OrganismInput](../../models/components/organisminput.md)]     | :heavy_check_mark:                                                             | N/A                                                                            |
+| `substrates`                                                                   | List[[components.SubstrateInput](../../models/components/substrateinput.md)]   | :heavy_check_mark:                                                             | N/A                                                                            |
+| `literature`                                                                   | List[[components.LiteratureInput](../../models/components/literatureinput.md)] | :heavy_check_mark:                                                             | N/A                                                                            |
+| `name`                                                                         | *str*                                                                          | :heavy_check_mark:                                                             | N/A                                                                            |
+| `amino_acid_sequence`                                                          | *Optional[str]*                                                                | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `verified_activity`                                                            | *Optional[bool]*                                                               | :heavy_minus_sign:                                                             | N/A                                                                            |

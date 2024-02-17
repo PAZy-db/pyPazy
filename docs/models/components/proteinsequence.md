@@ -1,0 +1,14 @@
+# ProteinSequence
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `id`                                                                 | *int*                                                                | :heavy_check_mark:                                                   | N/A                                                                  |
+| `organisms`                                                          | List[[components.Organism](../../models/components/organism.md)]     | :heavy_check_mark:                                                   | N/A                                                                  |
+| `substrates`                                                         | List[[components.Substrate](../../models/components/substrate.md)]   | :heavy_check_mark:                                                   | N/A                                                                  |
+| `literature`                                                         | List[[components.Literature](../../models/components/literature.md)] | :heavy_check_mark:                                                   | N/A                                                                  |
+| `name`                                                               | *str*                                                                | :heavy_check_mark:                                                   | N/A                                                                  |
+| `amino_acid_sequence`                                                | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `verified_activity`                                                  | *Optional[bool]*                                                     | :heavy_minus_sign:                                                   | N/A                                                                  |
