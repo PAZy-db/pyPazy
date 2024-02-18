@@ -7,6 +7,9 @@ management:
   generationVersion: 2.262.2
   releaseVersion: 0.1.7
   configChecksum: 1a7860e2e9e6bbeb43f31deb790f1bd9
+  repoURL: https://github.com/PAZy-db/pyPazy.git
+  repoSubDirectory: .
+  installationURL: https://github.com/PAZy-db/pyPazy.git
 features:
   python:
     core: 4.4.6
