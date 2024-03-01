@@ -4,17 +4,17 @@ management:
   docChecksum: fe073bc69201c6a4f1e96147cc660ee6
   docVersion: 0.0.1
   speakeasyVersion: internal
-  generationVersion: 2.262.2
-  releaseVersion: 0.1.7
-  configChecksum: 1a7860e2e9e6bbeb43f31deb790f1bd9
+  generationVersion: 2.275.4
+  releaseVersion: 0.2.0
+  configChecksum: 2143980a10b43b166b6d9172e642f070
   repoURL: https://github.com/PAZy-db/pyPazy.git
   repoSubDirectory: .
   installationURL: https://github.com/PAZy-db/pyPazy.git
 features:
   python:
-    core: 4.4.6
+    core: 4.5.0
     flattening: 2.81.1
-    globalSecurity: 2.83.2
+    globalSecurity: 2.83.4
     globalServerURLs: 2.82.1
     inputOutputModels: 2.83.1
 generatedFiles:
@@ -157,3 +157,6 @@ generatedFiles:
   - docs/sdks/substrates/README.md
   - USAGE.md
   - .gitattributes
+  - src/pazy/_hooks/sdkhooks.py
+  - src/pazy/_hooks/types.py
+  - src/pazy/_hooks/__init__.py
