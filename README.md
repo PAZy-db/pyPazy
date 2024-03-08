@@ -45,6 +45,7 @@ res = s.datasets.get_datasets()
 if res.datasets is not None:
     # handle response
     pass
+
 ```
 <!-- End SDK Example Usage [usage] -->
 
@@ -129,6 +130,7 @@ except errors.SDKError as e:
 if res.datasets is not None:
     # handle response
     pass
+
 ```
 <!-- End Error Handling [errors] -->
 
@@ -162,6 +164,7 @@ res = s.datasets.get_datasets()
 if res.datasets is not None:
     # handle response
     pass
+
 ```
 
 
@@ -185,6 +188,7 @@ res = s.datasets.get_datasets()
 if res.datasets is not None:
     # handle response
     pass
+
 ```
 <!-- End Server Selection [server] -->
 
@@ -232,6 +236,7 @@ res = s.datasets.get_datasets()
 if res.datasets is not None:
     # handle response
     pass
+
 ```
 <!-- End Authentication [security] -->
 

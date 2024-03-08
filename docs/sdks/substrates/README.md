@@ -32,6 +32,7 @@ res = s.substrates.get_substrates()
 if res.substrates is not None:
     # handle response
     pass
+
 ```
 
 
@@ -70,6 +71,7 @@ res = s.substrates.add_substrate(req)
 if res.substrate is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -110,6 +112,7 @@ res = s.substrates.get_substrate_by_id(id='<value>')
 if res.substrate is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -153,6 +156,7 @@ res = s.substrates.update_substrate(id='<value>', substrate=components.Substrate
 if res.substrate is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -194,6 +198,7 @@ res = s.substrates.partial_update_substrate(id='<value>', patched_substrate=comp
 if res.substrate is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -232,9 +237,10 @@ s = pazy.Pazy(
 
 res = s.substrates.delete_substrate(id='<value>')
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

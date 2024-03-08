@@ -32,6 +32,7 @@ res = s.proteins.get_protein_sequences()
 if res.protein_sequences is not None:
     # handle response
     pass
+
 ```
 
 
@@ -89,6 +90,7 @@ res = s.proteins.add_protein_sequence(req)
 if res.protein_sequence is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -129,6 +131,7 @@ res = s.proteins.get_protein_sequence_by_id(id='<value>')
 if res.protein_sequence is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -191,6 +194,7 @@ res = s.proteins.update_protein_sequence(id='<value>', protein_sequence=componen
 if res.protein_sequence is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -232,6 +236,7 @@ res = s.proteins.partial_update_protein_sequence(id='<value>', patched_protein_s
 if res.protein_sequence is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -270,9 +275,10 @@ s = pazy.Pazy(
 
 res = s.proteins.delete_protein_sequence(id='<value>')
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
