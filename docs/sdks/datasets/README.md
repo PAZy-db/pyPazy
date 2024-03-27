@@ -32,6 +32,7 @@ res = s.datasets.get_datasets()
 if res.datasets is not None:
     # handle response
     pass
+
 ```
 
 
@@ -95,6 +96,7 @@ res = s.datasets.add_dataset(req)
 if res.dataset is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -135,6 +137,7 @@ res = s.datasets.get_dataset_by_id(id='<value>')
 if res.dataset is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -203,6 +206,7 @@ res = s.datasets.update_dataset(id='<value>', dataset=components.DatasetInput(
 if res.dataset is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -244,6 +248,7 @@ res = s.datasets.partial_update_dataset(id='<value>', patched_dataset=components
 if res.dataset is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -282,9 +287,10 @@ s = pazy.Pazy(
 
 res = s.datasets.delete_dataset(id='<value>')
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

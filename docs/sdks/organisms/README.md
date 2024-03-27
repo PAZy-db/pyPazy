@@ -32,6 +32,7 @@ res = s.organisms.get_organisms()
 if res.organisms is not None:
     # handle response
     pass
+
 ```
 
 
@@ -69,6 +70,7 @@ res = s.organisms.add_organism(req)
 if res.organism is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -109,6 +111,7 @@ res = s.organisms.get_organism_by_id(id='<value>')
 if res.organism is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -151,6 +154,7 @@ res = s.organisms.update_organism(id='<value>', organism=components.OrganismInpu
 if res.organism is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -192,6 +196,7 @@ res = s.organisms.partial_update_organism(id='<value>', patched_organism=compone
 if res.organism is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -230,9 +235,10 @@ s = pazy.Pazy(
 
 res = s.organisms.delete_organism(id='<value>')
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
