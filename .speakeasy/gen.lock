@@ -3,18 +3,18 @@ id: c781682f-77ca-4163-ac2c-07886fbd89fc
 management:
   docChecksum: fe073bc69201c6a4f1e96147cc660ee6
   docVersion: 0.0.1
-  speakeasyVersion: 1.207.1
-  generationVersion: 2.280.6
-  releaseVersion: 0.3.1
-  configChecksum: 857c59a6eeced47c9e40e807b6ec1ad0
+  speakeasyVersion: 1.227.0
+  generationVersion: 2.291.0
+  releaseVersion: 0.3.2
+  configChecksum: 09cce2664b7282af35601cf25bc2655c
   repoURL: https://github.com/PAZy-db/pyPazy.git
   repoSubDirectory: .
   installationURL: https://github.com/PAZy-db/pyPazy.git
 features:
   python:
-    core: 4.5.1
+    core: 4.5.2
     flattening: 2.81.1
-    globalSecurity: 2.83.4
+    globalSecurity: 2.83.5
     globalServerURLs: 2.82.2
     inputOutputModels: 2.83.1
     responseFormat: 0.1.0
