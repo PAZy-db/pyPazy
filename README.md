@@ -45,6 +45,7 @@ res = s.datasets.get_datasets()
 if res.datasets is not None:
     # handle response
     pass
+
 ```
 <!-- End SDK Example Usage [usage] -->
 
@@ -104,7 +105,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ### Example
 
@@ -129,6 +130,7 @@ except errors.SDKError as e:
 if res.datasets is not None:
     # handle response
     pass
+
 ```
 <!-- End Error Handling [errors] -->
 
@@ -162,6 +164,7 @@ res = s.datasets.get_datasets()
 if res.datasets is not None:
     # handle response
     pass
+
 ```
 
 
@@ -185,6 +188,7 @@ res = s.datasets.get_datasets()
 if res.datasets is not None:
     # handle response
     pass
+
 ```
 <!-- End Server Selection [server] -->
 
@@ -200,7 +204,7 @@ import requests
 
 http_client = requests.Session()
 http_client.headers.update({'x-custom-header': 'someValue'})
-s = pazy.Pazy(client: http_client)
+s = pazy.Pazy(client=http_client)
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
@@ -232,6 +236,7 @@ res = s.datasets.get_datasets()
 if res.datasets is not None:
     # handle response
     pass
+
 ```
 <!-- End Authentication [security] -->
 

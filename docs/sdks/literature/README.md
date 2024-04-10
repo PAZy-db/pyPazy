@@ -32,6 +32,7 @@ res = s.literature.get_literatures()
 if res.literature is not None:
     # handle response
     pass
+
 ```
 
 
@@ -42,7 +43,7 @@ if res.literature is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## add_literature
 
@@ -73,6 +74,7 @@ res = s.literature.add_literature(req)
 if res.literature is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -89,7 +91,7 @@ if res.literature is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## get_literature_by_id
 
@@ -113,6 +115,7 @@ res = s.literature.get_literature_by_id(id='<value>')
 if res.literature is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -129,7 +132,7 @@ if res.literature is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update_literature
 
@@ -159,6 +162,7 @@ res = s.literature.update_literature(id='<value>', literature=components.Literat
 if res.literature is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -176,7 +180,7 @@ if res.literature is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## partial_update_literature
 
@@ -200,6 +204,7 @@ res = s.literature.partial_update_literature(id='<value>', patched_literature=co
 if res.literature is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -217,7 +222,7 @@ if res.literature is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## delete_literature
 
@@ -238,9 +243,10 @@ s = pazy.Pazy(
 
 res = s.literature.delete_literature(id='<value>')
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -257,4 +263,4 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

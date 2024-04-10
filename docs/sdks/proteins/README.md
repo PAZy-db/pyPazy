@@ -32,6 +32,7 @@ res = s.proteins.get_protein_sequences()
 if res.protein_sequences is not None:
     # handle response
     pass
+
 ```
 
 
@@ -42,7 +43,7 @@ if res.protein_sequences is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## add_protein_sequence
 
@@ -89,6 +90,7 @@ res = s.proteins.add_protein_sequence(req)
 if res.protein_sequence is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -105,7 +107,7 @@ if res.protein_sequence is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## get_protein_sequence_by_id
 
@@ -129,6 +131,7 @@ res = s.proteins.get_protein_sequence_by_id(id='<value>')
 if res.protein_sequence is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -145,7 +148,7 @@ if res.protein_sequence is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update_protein_sequence
 
@@ -191,6 +194,7 @@ res = s.proteins.update_protein_sequence(id='<value>', protein_sequence=componen
 if res.protein_sequence is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -208,7 +212,7 @@ if res.protein_sequence is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## partial_update_protein_sequence
 
@@ -232,6 +236,7 @@ res = s.proteins.partial_update_protein_sequence(id='<value>', patched_protein_s
 if res.protein_sequence is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -249,7 +254,7 @@ if res.protein_sequence is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## delete_protein_sequence
 
@@ -270,9 +275,10 @@ s = pazy.Pazy(
 
 res = s.proteins.delete_protein_sequence(id='<value>')
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -289,4 +295,4 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
