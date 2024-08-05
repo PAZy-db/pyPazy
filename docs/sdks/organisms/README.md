@@ -32,6 +32,7 @@ res = s.organisms.get_organisms()
 if res.organisms is not None:
     # handle response
     pass
+
 ```
 
 
@@ -42,7 +43,7 @@ if res.organisms is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## add_organism
 
@@ -69,6 +70,7 @@ res = s.organisms.add_organism(req)
 if res.organism is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -85,7 +87,7 @@ if res.organism is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## get_organism_by_id
 
@@ -109,6 +111,7 @@ res = s.organisms.get_organism_by_id(id='<value>')
 if res.organism is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -125,7 +128,7 @@ if res.organism is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update_organism
 
@@ -151,6 +154,7 @@ res = s.organisms.update_organism(id='<value>', organism=components.OrganismInpu
 if res.organism is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -168,7 +172,7 @@ if res.organism is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## partial_update_organism
 
@@ -192,6 +196,7 @@ res = s.organisms.partial_update_organism(id='<value>', patched_organism=compone
 if res.organism is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -209,7 +214,7 @@ if res.organism is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## delete_organism
 
@@ -230,9 +235,10 @@ s = pazy.Pazy(
 
 res = s.organisms.delete_organism(id='<value>')
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -249,4 +255,4 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

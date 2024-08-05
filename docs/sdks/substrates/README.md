@@ -32,6 +32,7 @@ res = s.substrates.get_substrates()
 if res.substrates is not None:
     # handle response
     pass
+
 ```
 
 
@@ -42,7 +43,7 @@ if res.substrates is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## add_substrate
 
@@ -70,6 +71,7 @@ res = s.substrates.add_substrate(req)
 if res.substrate is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -86,7 +88,7 @@ if res.substrate is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## get_substrate_by_id
 
@@ -110,6 +112,7 @@ res = s.substrates.get_substrate_by_id(id='<value>')
 if res.substrate is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -126,7 +129,7 @@ if res.substrate is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update_substrate
 
@@ -153,6 +156,7 @@ res = s.substrates.update_substrate(id='<value>', substrate=components.Substrate
 if res.substrate is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -170,7 +174,7 @@ if res.substrate is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## partial_update_substrate
 
@@ -194,6 +198,7 @@ res = s.substrates.partial_update_substrate(id='<value>', patched_substrate=comp
 if res.substrate is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -211,7 +216,7 @@ if res.substrate is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## delete_substrate
 
@@ -232,9 +237,10 @@ s = pazy.Pazy(
 
 res = s.substrates.delete_substrate(id='<value>')
 
-if res.status_code == 200:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -251,4 +257,4 @@ if res.status_code == 200:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

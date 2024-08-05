@@ -3,20 +3,21 @@ id: c781682f-77ca-4163-ac2c-07886fbd89fc
 management:
   docChecksum: fe073bc69201c6a4f1e96147cc660ee6
   docVersion: 0.0.1
-  speakeasyVersion: internal
-  generationVersion: 2.262.2
-  releaseVersion: 0.1.7
-  configChecksum: 1a7860e2e9e6bbeb43f31deb790f1bd9
+  speakeasyVersion: 1.245.0
+  generationVersion: 2.301.3
+  releaseVersion: 0.2.0
+  configChecksum: 9d9c7ff54fd3b5fc298865ead5ecab29
   repoURL: https://github.com/PAZy-db/pyPazy.git
   repoSubDirectory: .
   installationURL: https://github.com/PAZy-db/pyPazy.git
 features:
   python:
-    core: 4.4.6
+    core: 4.6.4
     flattening: 2.81.1
-    globalSecurity: 2.83.2
-    globalServerURLs: 2.82.1
+    globalSecurity: 2.83.5
+    globalServerURLs: 2.82.2
     inputOutputModels: 2.83.1
+    responseFormat: 0.1.0
 generatedFiles:
   - src/pazy/sdkconfiguration.py
   - src/pazy/datasets.py
@@ -25,6 +26,7 @@ generatedFiles:
   - src/pazy/proteins.py
   - src/pazy/substrates.py
   - src/pazy/sdk.py
+  - py.typed
   - pylintrc
   - setup.py
   - src/pazy/__init__.py
@@ -157,3 +159,6 @@ generatedFiles:
   - docs/sdks/substrates/README.md
   - USAGE.md
   - .gitattributes
+  - src/pazy/_hooks/sdkhooks.py
+  - src/pazy/_hooks/types.py
+  - src/pazy/_hooks/__init__.py
