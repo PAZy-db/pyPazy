@@ -1,4 +1,6 @@
 openapi: 3.0.3
+servers:
+  - url: http://localhost:8000
 info:
   title: PaZY API
   version: 0.0.1
