@@ -17,32 +17,42 @@ Returns all Substrates
 ### Example Usage
 
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
 
 res = s.substrates.get_substrates()
 
-if res.substrates is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `limit`                                                             | *Optional[int]*                                                     | :heavy_minus_sign:                                                  | Number of results to return per page.                               |
+| `offset`                                                            | *Optional[int]*                                                     | :heavy_minus_sign:                                                  | The initial index from which to return the results.                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 
 ### Response
 
-**[operations.GetSubstratesResponse](../../models/operations/getsubstratesresponse.md)**
+**[components.PaginatedSubstrateList](../../models/components/paginatedsubstratelist.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## add_substrate
 
@@ -51,25 +61,26 @@ Adds a new Substrate to the database.
 ### Example Usage
 
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
-req = components.SubstrateInput(
-    name='<value>',
-    abbreviation='<value>',
-)
 
-res = s.substrates.add_substrate(req)
+res = s.substrates.add_substrate(request={
+    "name": "<value>",
+    "abbreviation": "<value>",
+})
 
-if res.substrate is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -77,16 +88,17 @@ if res.substrate is not None:
 | Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `request`                                                              | [components.SubstrateInput](../../models/components/substrateinput.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
+| `retries`                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)       | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |
 
 
 ### Response
 
-**[operations.AddSubstrateResponse](../../models/operations/addsubstrateresponse.md)**
+**[components.Substrate](../../models/components/substrate.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## get_substrate_by_id
 
@@ -95,38 +107,41 @@ Returns a Substrate for a given Substrate ID.
 ### Example Usage
 
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
 
-res = s.substrates.get_substrate_by_id(id='<value>')
+res = s.substrates.get_substrate_by_id(id="<value>")
 
-if res.substrate is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *str*              | :heavy_check_mark: | N/A                |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 
 ### Response
 
-**[operations.GetSubstrateByIDResponse](../../models/operations/getsubstratebyidresponse.md)**
+**[components.Substrate](../../models/components/substrate.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update_substrate
 
@@ -135,24 +150,26 @@ Updates a Substrate for a given Substrate ID.
 ### Example Usage
 
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
 
-res = s.substrates.update_substrate(id='<value>', substrate=components.SubstrateInput(
-    name='<value>',
-    abbreviation='<value>',
-))
+res = s.substrates.update_substrate(id="<value>", substrate={
+    "name": "<value>",
+    "abbreviation": "<value>",
+})
 
-if res.substrate is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -161,16 +178,17 @@ if res.substrate is not None:
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `id`                                                                   | *str*                                                                  | :heavy_check_mark:                                                     | N/A                                                                    |
 | `substrate`                                                            | [components.SubstrateInput](../../models/components/substrateinput.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `retries`                                                              | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)       | :heavy_minus_sign:                                                     | Configuration to override the default retry behavior of the client.    |
 
 
 ### Response
 
-**[operations.UpdateSubstrateResponse](../../models/operations/updatesubstrateresponse.md)**
+**[components.Substrate](../../models/components/substrate.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## partial_update_substrate
 
@@ -179,21 +197,23 @@ Partially updates a Substrate for a given Substrate ID.
 ### Example Usage
 
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
 
-res = s.substrates.partial_update_substrate(id='<value>', patched_substrate=components.PatchedSubstrate())
+res = s.substrates.partial_update_substrate(id="<value>")
 
-if res.substrate is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -202,16 +222,17 @@ if res.substrate is not None:
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | `id`                                                                                 | *str*                                                                                | :heavy_check_mark:                                                                   | N/A                                                                                  |
 | `patched_substrate`                                                                  | [Optional[components.PatchedSubstrate]](../../models/components/patchedsubstrate.md) | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |
 
 
 ### Response
 
-**[operations.PartialUpdateSubstrateResponse](../../models/operations/partialupdatesubstrateresponse.md)**
+**[components.Substrate](../../models/components/substrate.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## delete_substrate
 
@@ -220,35 +241,32 @@ Deletes a Substrate from the database.
 ### Example Usage
 
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
 
-res = s.substrates.delete_substrate(id='<value>')
+s.substrates.delete_substrate(id="<value>")
 
-if res.status_code == 200:
-    # handle response
-    pass
+# Use the SDK ...
+
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *str*              | :heavy_check_mark: | N/A                |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
-
-### Response
-
-**[operations.DeleteSubstrateResponse](../../models/operations/deletesubstrateresponse.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |

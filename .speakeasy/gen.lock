@@ -1,138 +1,117 @@
 lockVersion: 2.0.0
 id: c781682f-77ca-4163-ac2c-07886fbd89fc
 management:
-  docChecksum: fe073bc69201c6a4f1e96147cc660ee6
+  docChecksum: 82524c7c0377efdf7e64546396972994
   docVersion: 0.0.1
-  speakeasyVersion: internal
-  generationVersion: 2.262.2
-  releaseVersion: 0.1.7
-  configChecksum: 1a7860e2e9e6bbeb43f31deb790f1bd9
+  speakeasyVersion: 1.352.2
+  generationVersion: 2.385.2
+  releaseVersion: 0.2.0
+  configChecksum: 30ed2c5a878b32df8bf0bda94b08d070
   repoURL: https://github.com/PAZy-db/pyPazy.git
   repoSubDirectory: .
   installationURL: https://github.com/PAZy-db/pyPazy.git
 features:
   python:
-    core: 4.4.6
-    flattening: 2.81.1
-    globalSecurity: 2.83.2
-    globalServerURLs: 2.82.1
-    inputOutputModels: 2.83.1
+    additionalDependencies: 1.0.0
+    core: 5.3.3
+    defaultEnabledRetries: 0.2.0
+    envVarSecurityUsage: 0.3.1
+    flattening: 3.0.0
+    globalSecurity: 3.0.1
+    globalSecurityCallbacks: 1.0.0
+    globalServerURLs: 3.0.0
+    inputOutputModels: 3.0.0
+    nullables: 1.0.0
+    responseFormat: 1.0.0
+    retries: 3.0.0
+    sdkHooks: 1.0.0
 generatedFiles:
-  - src/pazy/sdkconfiguration.py
-  - src/pazy/datasets.py
-  - src/pazy/literature.py
-  - src/pazy/organisms.py
-  - src/pazy/proteins.py
-  - src/pazy/substrates.py
-  - src/pazy/sdk.py
+  - src/pypazy/sdkconfiguration.py
+  - src/pypazy/datasets.py
+  - src/pypazy/literature.py
+  - src/pypazy/organisms.py
+  - src/pypazy/proteins.py
+  - src/pypazy/substrates.py
+  - src/pypazy/sdk.py
+  - .vscode/settings.json
+  - poetry.toml
+  - py.typed
   - pylintrc
-  - setup.py
-  - src/pazy/__init__.py
-  - src/pazy/utils/__init__.py
-  - src/pazy/utils/retries.py
-  - src/pazy/utils/utils.py
-  - src/pazy/models/errors/sdkerror.py
-  - tests/helpers.py
-  - src/pazy/models/operations/getdatasets.py
-  - src/pazy/models/operations/adddataset.py
-  - src/pazy/models/operations/getdatasetbyid.py
-  - src/pazy/models/operations/updatedataset.py
-  - src/pazy/models/operations/partialupdatedataset.py
-  - src/pazy/models/operations/deletedataset.py
-  - src/pazy/models/operations/getliteratures.py
-  - src/pazy/models/operations/addliterature.py
-  - src/pazy/models/operations/getliteraturebyid.py
-  - src/pazy/models/operations/updateliterature.py
-  - src/pazy/models/operations/partialupdateliterature.py
-  - src/pazy/models/operations/deleteliterature.py
-  - src/pazy/models/operations/getorganisms.py
-  - src/pazy/models/operations/addorganism.py
-  - src/pazy/models/operations/getorganismbyid.py
-  - src/pazy/models/operations/updateorganism.py
-  - src/pazy/models/operations/partialupdateorganism.py
-  - src/pazy/models/operations/deleteorganism.py
-  - src/pazy/models/operations/getproteinsequences.py
-  - src/pazy/models/operations/addproteinsequence.py
-  - src/pazy/models/operations/getproteinsequencebyid.py
-  - src/pazy/models/operations/updateproteinsequence.py
-  - src/pazy/models/operations/partialupdateproteinsequence.py
-  - src/pazy/models/operations/deleteproteinsequence.py
-  - src/pazy/models/operations/getsubstrates.py
-  - src/pazy/models/operations/addsubstrate.py
-  - src/pazy/models/operations/getsubstratebyid.py
-  - src/pazy/models/operations/updatesubstrate.py
-  - src/pazy/models/operations/partialupdatesubstrate.py
-  - src/pazy/models/operations/deletesubstrate.py
-  - src/pazy/models/components/dataset.py
-  - src/pazy/models/components/proteinsequence.py
-  - src/pazy/models/components/literature.py
-  - src/pazy/models/components/substrate.py
-  - src/pazy/models/components/organism.py
-  - src/pazy/models/components/dataset_input.py
-  - src/pazy/models/components/proteinsequence_input.py
-  - src/pazy/models/components/literature_input.py
-  - src/pazy/models/components/substrate_input.py
-  - src/pazy/models/components/organism_input.py
-  - src/pazy/models/components/patcheddataset.py
-  - src/pazy/models/components/patchedliterature.py
-  - src/pazy/models/components/patchedorganism.py
-  - src/pazy/models/components/patchedproteinsequence.py
-  - src/pazy/models/components/patchedsubstrate.py
-  - src/pazy/models/components/security.py
-  - src/pazy/models/__init__.py
-  - src/pazy/models/errors/__init__.py
-  - src/pazy/models/operations/__init__.py
-  - src/pazy/models/components/__init__.py
-  - docs/models/operations/getdatasetsresponse.md
-  - docs/models/operations/adddatasetresponse.md
-  - docs/models/operations/getdatasetbyidrequest.md
-  - docs/models/operations/getdatasetbyidresponse.md
-  - docs/models/operations/updatedatasetrequest.md
-  - docs/models/operations/updatedatasetresponse.md
-  - docs/models/operations/partialupdatedatasetrequest.md
-  - docs/models/operations/partialupdatedatasetresponse.md
-  - docs/models/operations/deletedatasetrequest.md
-  - docs/models/operations/deletedatasetresponse.md
-  - docs/models/operations/getliteraturesresponse.md
-  - docs/models/operations/addliteratureresponse.md
-  - docs/models/operations/getliteraturebyidrequest.md
-  - docs/models/operations/getliteraturebyidresponse.md
-  - docs/models/operations/updateliteraturerequest.md
-  - docs/models/operations/updateliteratureresponse.md
-  - docs/models/operations/partialupdateliteraturerequest.md
-  - docs/models/operations/partialupdateliteratureresponse.md
-  - docs/models/operations/deleteliteraturerequest.md
-  - docs/models/operations/deleteliteratureresponse.md
-  - docs/models/operations/getorganismsresponse.md
-  - docs/models/operations/addorganismresponse.md
-  - docs/models/operations/getorganismbyidrequest.md
-  - docs/models/operations/getorganismbyidresponse.md
-  - docs/models/operations/updateorganismrequest.md
-  - docs/models/operations/updateorganismresponse.md
-  - docs/models/operations/partialupdateorganismrequest.md
-  - docs/models/operations/partialupdateorganismresponse.md
-  - docs/models/operations/deleteorganismrequest.md
-  - docs/models/operations/deleteorganismresponse.md
-  - docs/models/operations/getproteinsequencesresponse.md
-  - docs/models/operations/addproteinsequenceresponse.md
-  - docs/models/operations/getproteinsequencebyidrequest.md
-  - docs/models/operations/getproteinsequencebyidresponse.md
-  - docs/models/operations/updateproteinsequencerequest.md
-  - docs/models/operations/updateproteinsequenceresponse.md
-  - docs/models/operations/partialupdateproteinsequencerequest.md
-  - docs/models/operations/partialupdateproteinsequenceresponse.md
-  - docs/models/operations/deleteproteinsequencerequest.md
-  - docs/models/operations/deleteproteinsequenceresponse.md
-  - docs/models/operations/getsubstratesresponse.md
-  - docs/models/operations/addsubstrateresponse.md
-  - docs/models/operations/getsubstratebyidrequest.md
-  - docs/models/operations/getsubstratebyidresponse.md
-  - docs/models/operations/updatesubstraterequest.md
-  - docs/models/operations/updatesubstrateresponse.md
-  - docs/models/operations/partialupdatesubstraterequest.md
-  - docs/models/operations/partialupdatesubstrateresponse.md
-  - docs/models/operations/deletesubstraterequest.md
-  - docs/models/operations/deletesubstrateresponse.md
+  - pyproject.toml
+  - scripts/compile.sh
+  - scripts/publish.sh
+  - src/pypazy/__init__.py
+  - src/pypazy/basesdk.py
+  - src/pypazy/httpclient.py
+  - src/pypazy/py.typed
+  - src/pypazy/types/__init__.py
+  - src/pypazy/types/basemodel.py
+  - src/pypazy/utils/__init__.py
+  - src/pypazy/utils/annotations.py
+  - src/pypazy/utils/enums.py
+  - src/pypazy/utils/eventstreaming.py
+  - src/pypazy/utils/forms.py
+  - src/pypazy/utils/headers.py
+  - src/pypazy/utils/logger.py
+  - src/pypazy/utils/metadata.py
+  - src/pypazy/utils/queryparams.py
+  - src/pypazy/utils/requestbodies.py
+  - src/pypazy/utils/retries.py
+  - src/pypazy/utils/security.py
+  - src/pypazy/utils/serializers.py
+  - src/pypazy/utils/url.py
+  - src/pypazy/utils/values.py
+  - src/pypazy/models/errors/sdkerror.py
+  - src/pypazy/models/components/paginateddatasetlist.py
+  - src/pypazy/models/components/dataset.py
+  - src/pypazy/models/components/proteinsequence.py
+  - src/pypazy/models/components/literature.py
+  - src/pypazy/models/components/substrate.py
+  - src/pypazy/models/components/organism.py
+  - src/pypazy/models/components/dataset_input.py
+  - src/pypazy/models/components/proteinsequence_input.py
+  - src/pypazy/models/components/literature_input.py
+  - src/pypazy/models/components/substrate_input.py
+  - src/pypazy/models/components/organism_input.py
+  - src/pypazy/models/components/patcheddataset.py
+  - src/pypazy/models/components/paginatedliteraturelist.py
+  - src/pypazy/models/components/patchedliterature.py
+  - src/pypazy/models/components/paginatedorganismlist.py
+  - src/pypazy/models/components/patchedorganism.py
+  - src/pypazy/models/components/paginatedproteinsequencelist.py
+  - src/pypazy/models/components/patchedproteinsequence.py
+  - src/pypazy/models/components/paginatedsubstratelist.py
+  - src/pypazy/models/components/patchedsubstrate.py
+  - src/pypazy/models/components/security.py
+  - src/pypazy/models/components/__init__.py
+  - src/pypazy/models/operations/getdatasets.py
+  - src/pypazy/models/operations/getdatasetbyid.py
+  - src/pypazy/models/operations/updatedataset.py
+  - src/pypazy/models/operations/partialupdatedataset.py
+  - src/pypazy/models/operations/deletedataset.py
+  - src/pypazy/models/operations/getliteratures.py
+  - src/pypazy/models/operations/getliteraturebyid.py
+  - src/pypazy/models/operations/updateliterature.py
+  - src/pypazy/models/operations/partialupdateliterature.py
+  - src/pypazy/models/operations/deleteliterature.py
+  - src/pypazy/models/operations/getorganisms.py
+  - src/pypazy/models/operations/getorganismbyid.py
+  - src/pypazy/models/operations/updateorganism.py
+  - src/pypazy/models/operations/partialupdateorganism.py
+  - src/pypazy/models/operations/deleteorganism.py
+  - src/pypazy/models/operations/getproteinsequences.py
+  - src/pypazy/models/operations/getproteinsequencebyid.py
+  - src/pypazy/models/operations/updateproteinsequence.py
+  - src/pypazy/models/operations/partialupdateproteinsequence.py
+  - src/pypazy/models/operations/deleteproteinsequence.py
+  - src/pypazy/models/operations/getsubstrates.py
+  - src/pypazy/models/operations/getsubstratebyid.py
+  - src/pypazy/models/operations/updatesubstrate.py
+  - src/pypazy/models/operations/partialupdatesubstrate.py
+  - src/pypazy/models/operations/deletesubstrate.py
+  - src/pypazy/models/operations/__init__.py
+  - src/pypazy/models/errors/__init__.py
+  - docs/models/components/paginateddatasetlist.md
   - docs/models/components/dataset.md
   - docs/models/components/proteinsequence.md
   - docs/models/components/literature.md
@@ -144,12 +123,42 @@ generatedFiles:
   - docs/models/components/substrateinput.md
   - docs/models/components/organisminput.md
   - docs/models/components/patcheddataset.md
+  - docs/models/components/paginatedliteraturelist.md
   - docs/models/components/patchedliterature.md
+  - docs/models/components/paginatedorganismlist.md
   - docs/models/components/patchedorganism.md
+  - docs/models/components/paginatedproteinsequencelist.md
   - docs/models/components/patchedproteinsequence.md
+  - docs/models/components/paginatedsubstratelist.md
   - docs/models/components/patchedsubstrate.md
   - docs/models/components/security.md
+  - docs/models/operations/getdatasetsrequest.md
+  - docs/models/operations/getdatasetbyidrequest.md
+  - docs/models/operations/updatedatasetrequest.md
+  - docs/models/operations/partialupdatedatasetrequest.md
+  - docs/models/operations/deletedatasetrequest.md
+  - docs/models/operations/getliteraturesrequest.md
+  - docs/models/operations/getliteraturebyidrequest.md
+  - docs/models/operations/updateliteraturerequest.md
+  - docs/models/operations/partialupdateliteraturerequest.md
+  - docs/models/operations/deleteliteraturerequest.md
+  - docs/models/operations/getorganismsrequest.md
+  - docs/models/operations/getorganismbyidrequest.md
+  - docs/models/operations/updateorganismrequest.md
+  - docs/models/operations/partialupdateorganismrequest.md
+  - docs/models/operations/deleteorganismrequest.md
+  - docs/models/operations/getproteinsequencesrequest.md
+  - docs/models/operations/getproteinsequencebyidrequest.md
+  - docs/models/operations/updateproteinsequencerequest.md
+  - docs/models/operations/partialupdateproteinsequencerequest.md
+  - docs/models/operations/deleteproteinsequencerequest.md
+  - docs/models/operations/getsubstratesrequest.md
+  - docs/models/operations/getsubstratebyidrequest.md
+  - docs/models/operations/updatesubstraterequest.md
+  - docs/models/operations/partialupdatesubstraterequest.md
+  - docs/models/operations/deletesubstraterequest.md
   - docs/sdks/pazy/README.md
+  - docs/models/utils/retryconfig.md
   - docs/sdks/datasets/README.md
   - docs/sdks/literature/README.md
   - docs/sdks/organisms/README.md
@@ -157,3 +166,7 @@ generatedFiles:
   - docs/sdks/substrates/README.md
   - USAGE.md
   - .gitattributes
+  - src/pypazy/_hooks/sdkhooks.py
+  - src/pypazy/_hooks/types.py
+  - src/pypazy/_hooks/__init__.py
+  - CONTRIBUTING.md
