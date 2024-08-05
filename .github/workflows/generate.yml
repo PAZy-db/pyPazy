@@ -16,7 +16,7 @@ jobs:
     with:
       speakeasy_version: latest
       openapi_docs: |
-        - https://pazy-backend.3.us-1.fl0.io/api/schema/
+        - ./openapi.yaml
       languages: |-
         - python
       mode: pr

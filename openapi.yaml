@@ -1,0 +1,1092 @@
+openapi: 3.0.3
+info:
+  title: PaZY API
+  version: 0.0.1
+  description: Backend used for the PaZY database to manage and view entries.
+paths:
+  /api/datasets/:
+    get:
+      operationId: getDatasets
+      description: Returns all Datasets
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - datasets
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedDatasetList'
+          description: ''
+    post:
+      operationId: addDataset
+      description: Adds a new Dataset to the database.
+      tags:
+      - datasets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+        required: true
+      security:
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: ''
+  /api/datasets/{id}:
+    get:
+      operationId: getDatasetByID
+      description: Returns a Dataset for a given Dataset ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - datasets
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: ''
+    put:
+      operationId: updateDataset
+      description: Updates a Dataset for a given Dataset ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - datasets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Dataset'
+        required: true
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: ''
+    patch:
+      operationId: partialUpdateDataset
+      description: Partially updates a Dataset for a given Dataset ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - datasets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDataset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDataset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDataset'
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+          description: ''
+    delete:
+      operationId: deleteDataset
+      description: Deletes a Dataset from the database.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - datasets
+      security:
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/literature/:
+    get:
+      operationId: getLiteratures
+      description: Returns all Literatures
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - literature
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedLiteratureList'
+          description: ''
+    post:
+      operationId: addLiterature
+      description: Adds a new Literature to the database.
+      tags:
+      - literature
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Literature'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Literature'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Literature'
+        required: true
+      security:
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Literature'
+          description: ''
+  /api/literature/{id}:
+    get:
+      operationId: getLiteratureByID
+      description: Returns a Literature for a given Literature ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - literature
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Literature'
+          description: ''
+    put:
+      operationId: updateLiterature
+      description: Updates a Literature for a given Literature ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - literature
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Literature'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Literature'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Literature'
+        required: true
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Literature'
+          description: ''
+    patch:
+      operationId: partialUpdateLiterature
+      description: Partially updates a Literature for a given Literature ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - literature
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLiterature'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedLiterature'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedLiterature'
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Literature'
+          description: ''
+    delete:
+      operationId: deleteLiterature
+      description: Deletes a Literature from the database.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - literature
+      security:
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/organisms/:
+    get:
+      operationId: getOrganisms
+      description: Returns all Organisms
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - organisms
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOrganismList'
+          description: ''
+    post:
+      operationId: addOrganism
+      description: Adds a new Organism to the database.
+      tags:
+      - organisms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Organism'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Organism'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Organism'
+        required: true
+      security:
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organism'
+          description: ''
+  /api/organisms/{id}:
+    get:
+      operationId: getOrganismByID
+      description: Returns a Organism for a given Organism ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organisms
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organism'
+          description: ''
+    put:
+      operationId: updateOrganism
+      description: Updates a Organism for a given Organism ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organisms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Organism'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Organism'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Organism'
+        required: true
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organism'
+          description: ''
+    patch:
+      operationId: partialUpdateOrganism
+      description: Partially updates a Organism for a given Organism ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organisms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOrganism'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOrganism'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOrganism'
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organism'
+          description: ''
+    delete:
+      operationId: deleteOrganism
+      description: Deletes a Organism from the database.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - organisms
+      security:
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/proteins/:
+    get:
+      operationId: getProteinSequences
+      description: Returns all ProteinSequences
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - proteins
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedProteinSequenceList'
+          description: ''
+    post:
+      operationId: addProteinSequence
+      description: Adds a new ProteinSequence to the database.
+      tags:
+      - proteins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProteinSequence'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProteinSequence'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProteinSequence'
+        required: true
+      security:
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProteinSequence'
+          description: ''
+  /api/proteins/{id}:
+    get:
+      operationId: getProteinSequenceByID
+      description: Returns a ProteinSequence for a given ProteinSequence ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - proteins
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProteinSequence'
+          description: ''
+    put:
+      operationId: updateProteinSequence
+      description: Updates a ProteinSequence for a given ProteinSequence ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - proteins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProteinSequence'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProteinSequence'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProteinSequence'
+        required: true
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProteinSequence'
+          description: ''
+    patch:
+      operationId: partialUpdateProteinSequence
+      description: Partially updates a ProteinSequence for a given ProteinSequence
+        ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - proteins
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProteinSequence'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProteinSequence'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProteinSequence'
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProteinSequence'
+          description: ''
+    delete:
+      operationId: deleteProteinSequence
+      description: Deletes a ProteinSequence from the database.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - proteins
+      security:
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/substrates/:
+    get:
+      operationId: getSubstrates
+      description: Returns all Substrates
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - substrates
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedSubstrateList'
+          description: ''
+    post:
+      operationId: addSubstrate
+      description: Adds a new Substrate to the database.
+      tags:
+      - substrates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Substrate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Substrate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Substrate'
+        required: true
+      security:
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Substrate'
+          description: ''
+  /api/substrates/{id}:
+    get:
+      operationId: getSubstrateByID
+      description: Returns a Substrate for a given Substrate ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - substrates
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Substrate'
+          description: ''
+    put:
+      operationId: updateSubstrate
+      description: Updates a Substrate for a given Substrate ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - substrates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Substrate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Substrate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Substrate'
+        required: true
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Substrate'
+          description: ''
+    patch:
+      operationId: partialUpdateSubstrate
+      description: Partially updates a Substrate for a given Substrate ID.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - substrates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSubstrate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSubstrate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSubstrate'
+      security:
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Substrate'
+          description: ''
+    delete:
+      operationId: deleteSubstrate
+      description: Deletes a Substrate from the database.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - substrates
+      security:
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Dataset:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        protein:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProteinSequence'
+        accession:
+          type: string
+          maxLength: 1000
+        database:
+          type: string
+          maxLength: 1000
+      required:
+      - accession
+      - database
+      - id
+      - protein
+    Literature:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        doi:
+          type: string
+          maxLength: 1000
+        title:
+          type: string
+        authors:
+          type: string
+        journal:
+          type: string
+        year:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+      required:
+      - authors
+      - doi
+      - id
+      - journal
+      - title
+      - year
+    Organism:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        scientific_name:
+          type: string
+          maxLength: 1000
+        phylum:
+          type: string
+        ncbi_taxonomy_id:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+      required:
+      - id
+      - scientific_name
+    PaginatedDatasetList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dataset'
+    PaginatedLiteratureList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Literature'
+    PaginatedOrganismList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organism'
+    PaginatedProteinSequenceList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProteinSequence'
+    PaginatedSubstrateList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Substrate'
+    PatchedDataset:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        protein:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProteinSequence'
+        accession:
+          type: string
+          maxLength: 1000
+        database:
+          type: string
+          maxLength: 1000
+    PatchedLiterature:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        doi:
+          type: string
+          maxLength: 1000
+        title:
+          type: string
+        authors:
+          type: string
+        journal:
+          type: string
+        year:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+    PatchedOrganism:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        scientific_name:
+          type: string
+          maxLength: 1000
+        phylum:
+          type: string
+        ncbi_taxonomy_id:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+    PatchedProteinSequence:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        organisms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organism'
+        substrates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Substrate'
+        literature:
+          type: array
+          items:
+            $ref: '#/components/schemas/Literature'
+        name:
+          type: string
+          maxLength: 1000
+        amino_acid_sequence:
+          type: string
+        verified_activity:
+          type: boolean
+    PatchedSubstrate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 1000
+        smiles:
+          type: string
+        inchikey:
+          type: string
+        abbreviation:
+          type: string
+          maxLength: 1000
+    ProteinSequence:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        organisms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organism'
+        substrates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Substrate'
+        literature:
+          type: array
+          items:
+            $ref: '#/components/schemas/Literature'
+        name:
+          type: string
+          maxLength: 1000
+        amino_acid_sequence:
+          type: string
+        verified_activity:
+          type: boolean
+      required:
+      - id
+      - literature
+      - name
+      - organisms
+      - substrates
+    Substrate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 1000
+        smiles:
+          type: string
+        inchikey:
+          type: string
+        abbreviation:
+          type: string
+          maxLength: 1000
+      required:
+      - abbreviation
+      - id
+      - name
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
