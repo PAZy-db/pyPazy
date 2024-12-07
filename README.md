@@ -19,8 +19,14 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
+PIP
 ```bash
 pip install git+https://github.com/PAZy-db/pyPazy.git
+```
+
+Poetry
+```bash
+poetry add git+https://github.com/PAZy-db/pyPazy.git
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -30,21 +36,47 @@ pip install git+https://github.com/PAZy-db/pyPazy.git
 ### Example
 
 ```python
-import pazy
-from pazy.models import components
+# Synchronous Example
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
 
 res = s.datasets.get_datasets()
 
-if res.datasets is not None:
+if res is not None:
     # handle response
     pass
+```
+
+</br>
+
+The same SDK client can also be used to make asychronous requests by importing asyncio.
+```python
+# Asynchronous Example
+import asyncio
+from pypazy import Pazy
+from pypazy.models import components
+
+async def main():
+    s = Pazy(
+        security=components.Security(
+            username="",
+            password="",
+        ),
+    )
+    res = await s.datasets.get_datasets_async()
+    if res is not None:
+        # handle response
+        pass
+
+asyncio.run(main())
 ```
 <!-- End SDK Example Usage [usage] -->
 
@@ -104,31 +136,33 @@ Handling errors in this SDK should largely match your expectations.  All operati
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ### Example
 
 ```python
-import pazy
-from pazy.models import components, errors
+from pypazy import Pazy
+from pypazy.models import components, errors
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
-
 
 res = None
 try:
     res = s.datasets.get_datasets()
+
 except errors.SDKError as e:
     # handle exception
     raise(e)
 
-if res.datasets is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 <!-- End Error Handling [errors] -->
 
@@ -141,27 +175,29 @@ You can override the default server globally by passing a server index to the `s
 
 | # | Server | Variables |
 | - | ------ | --------- |
-| 0 | `https://pazy-backend.3.us-1.fl0.io` | None |
+| 0 | `http://localhost:8000` | None |
 
 #### Example
 
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     server_idx=0,
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
 
 res = s.datasets.get_datasets()
 
-if res.datasets is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 
@@ -169,38 +205,105 @@ if res.datasets is not None:
 
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
-    server_url="https://pazy-backend.3.us-1.fl0.io",
+s = Pazy(
+    server_url="http://localhost:8000",
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
 
 res = s.datasets.get_datasets()
 
-if res.datasets is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 <!-- End Server Selection [server] -->
 
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Python SDK makes API calls using the [requests](https://pypi.org/project/requests/) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+The Python SDK makes API calls using the [httpx](https://www.python-httpx.org/) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with your own HTTP client instance.
+Depending on whether you are using the sync or async version of the SDK, you can pass an instance of `HttpClient` or `AsyncHttpClient` respectively, which are Protocol's ensuring that the client has the necessary methods to make API calls.
+This allows you to wrap the client with your own custom logic, such as adding custom headers, logging, or error handling, or you can just pass an instance of `httpx.Client` or `httpx.AsyncClient` directly.
 
 For example, you could specify a header for every request that this sdk makes as follows:
 ```python
-import pazy
-import requests
+from pypazy import Pazy
+import httpx
 
-http_client = requests.Session()
-http_client.headers.update({'x-custom-header': 'someValue'})
-s = pazy.Pazy(client: http_client)
+http_client = httpx.Client(headers={"x-custom-header": "someValue"})
+s = Pazy(client=http_client)
+```
+
+or you could wrap the client with your own custom logic:
+```python
+from pypazy import Pazy
+from pypazy.httpclient import AsyncHttpClient
+import httpx
+
+class CustomClient(AsyncHttpClient):
+    client: AsyncHttpClient
+
+    def __init__(self, client: AsyncHttpClient):
+        self.client = client
+
+    async def send(
+        self,
+        request: httpx.Request,
+        *,
+        stream: bool = False,
+        auth: Union[
+            httpx._types.AuthTypes, httpx._client.UseClientDefault, None
+        ] = httpx.USE_CLIENT_DEFAULT,
+        follow_redirects: Union[
+            bool, httpx._client.UseClientDefault
+        ] = httpx.USE_CLIENT_DEFAULT,
+    ) -> httpx.Response:
+        request.headers["Client-Level-Header"] = "added by client"
+
+        return await self.client.send(
+            request, stream=stream, auth=auth, follow_redirects=follow_redirects
+        )
+
+    def build_request(
+        self,
+        method: str,
+        url: httpx._types.URLTypes,
+        *,
+        content: Optional[httpx._types.RequestContent] = None,
+        data: Optional[httpx._types.RequestData] = None,
+        files: Optional[httpx._types.RequestFiles] = None,
+        json: Optional[Any] = None,
+        params: Optional[httpx._types.QueryParamTypes] = None,
+        headers: Optional[httpx._types.HeaderTypes] = None,
+        cookies: Optional[httpx._types.CookieTypes] = None,
+        timeout: Union[
+            httpx._types.TimeoutTypes, httpx._client.UseClientDefault
+        ] = httpx.USE_CLIENT_DEFAULT,
+        extensions: Optional[httpx._types.RequestExtensions] = None,
+    ) -> httpx.Request:
+        return self.client.build_request(
+            method,
+            url,
+            content=content,
+            data=data,
+            files=files,
+            json=json,
+            params=params,
+            headers=headers,
+            cookies=cookies,
+            timeout=timeout,
+            extensions=extensions,
+        )
+
+s = Pazy(async_client=CustomClient(httpx.AsyncClient()))
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
@@ -211,29 +314,97 @@ s = pazy.Pazy(client: http_client)
 
 This SDK supports the following security scheme globally:
 
-| Name       | Type       | Scheme     |
-| ---------- | ---------- | ---------- |
-| `password` | http       | HTTP Basic |
+| Name                  | Type                  | Scheme                |
+| --------------------- | --------------------- | --------------------- |
+| `username` `password` | http                  | HTTP Basic            |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
 
 res = s.datasets.get_datasets()
 
-if res.datasets is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Retries [retries] -->
+## Retries
+
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
+```python
+from pazy.utils import BackoffStrategy, RetryConfig
+from pypazy import Pazy
+from pypazy.models import components
+
+s = Pazy(
+    security=components.Security(
+        username="",
+        password="",
+    ),
+)
+
+
+res = s.datasets.get_datasets(,
+    RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
+
+if res is not None:
+    # handle response
+    pass
+
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
+```python
+from pazy.utils import BackoffStrategy, RetryConfig
+from pypazy import Pazy
+from pypazy.models import components
+
+s = Pazy(
+    retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
+    security=components.Security(
+        username="",
+        password="",
+    ),
+)
+
+
+res = s.datasets.get_datasets()
+
+if res is not None:
+    # handle response
+    pass
+
+```
+<!-- End Retries [retries] -->
+
+<!-- Start Debugging [debug] -->
+## Debugging
+
+To emit debug logs for SDK requests and responses you can pass a logger object directly into your SDK object.
+
+```python
+from pypazy import Pazy
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+s = Pazy(debug_logger=logging.getLogger("pypazy"))
+```
+<!-- End Debugging [debug] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

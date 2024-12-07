@@ -17,32 +17,42 @@ Returns all Organisms
 ### Example Usage
 
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
 
 res = s.organisms.get_organisms()
 
-if res.organisms is not None:
+if res is not None:
     # handle response
     pass
+
 ```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `limit`                                                             | *Optional[int]*                                                     | :heavy_minus_sign:                                                  | Number of results to return per page.                               |
+| `offset`                                                            | *Optional[int]*                                                     | :heavy_minus_sign:                                                  | The initial index from which to return the results.                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 
 ### Response
 
-**[operations.GetOrganismsResponse](../../models/operations/getorganismsresponse.md)**
+**[components.PaginatedOrganismList](../../models/components/paginatedorganismlist.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## add_organism
 
@@ -51,24 +61,25 @@ Adds a new Organism to the database.
 ### Example Usage
 
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
-req = components.OrganismInput(
-    scientific_name='<value>',
-)
 
-res = s.organisms.add_organism(req)
+res = s.organisms.add_organism(request={
+    "scientific_name": "<value>",
+})
 
-if res.organism is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -76,16 +87,17 @@ if res.organism is not None:
 | Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `request`                                                            | [components.OrganismInput](../../models/components/organisminput.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+| `retries`                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)     | :heavy_minus_sign:                                                   | Configuration to override the default retry behavior of the client.  |
 
 
 ### Response
 
-**[operations.AddOrganismResponse](../../models/operations/addorganismresponse.md)**
+**[components.Organism](../../models/components/organism.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## get_organism_by_id
 
@@ -94,38 +106,41 @@ Returns a Organism for a given Organism ID.
 ### Example Usage
 
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
 
-res = s.organisms.get_organism_by_id(id='<value>')
+res = s.organisms.get_organism_by_id(id="<value>")
 
-if res.organism is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *str*              | :heavy_check_mark: | N/A                |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 
 ### Response
 
-**[operations.GetOrganismByIDResponse](../../models/operations/getorganismbyidresponse.md)**
+**[components.Organism](../../models/components/organism.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## update_organism
 
@@ -134,23 +149,25 @@ Updates a Organism for a given Organism ID.
 ### Example Usage
 
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
 
-res = s.organisms.update_organism(id='<value>', organism=components.OrganismInput(
-    scientific_name='<value>',
-))
+res = s.organisms.update_organism(id="<value>", organism={
+    "scientific_name": "<value>",
+})
 
-if res.organism is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -159,16 +176,17 @@ if res.organism is not None:
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `id`                                                                 | *str*                                                                | :heavy_check_mark:                                                   | N/A                                                                  |
 | `organism`                                                           | [components.OrganismInput](../../models/components/organisminput.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `retries`                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)     | :heavy_minus_sign:                                                   | Configuration to override the default retry behavior of the client.  |
 
 
 ### Response
 
-**[operations.UpdateOrganismResponse](../../models/operations/updateorganismresponse.md)**
+**[components.Organism](../../models/components/organism.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## partial_update_organism
 
@@ -177,21 +195,23 @@ Partially updates a Organism for a given Organism ID.
 ### Example Usage
 
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
 
-res = s.organisms.partial_update_organism(id='<value>', patched_organism=components.PatchedOrganism())
+res = s.organisms.partial_update_organism(id="<value>")
 
-if res.organism is not None:
+if res is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -200,16 +220,17 @@ if res.organism is not None:
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `id`                                                                               | *str*                                                                              | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `patched_organism`                                                                 | [Optional[components.PatchedOrganism]](../../models/components/patchedorganism.md) | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `retries`                                                                          | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                   | :heavy_minus_sign:                                                                 | Configuration to override the default retry behavior of the client.                |
 
 
 ### Response
 
-**[operations.PartialUpdateOrganismResponse](../../models/operations/partialupdateorganismresponse.md)**
+**[components.Organism](../../models/components/organism.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## delete_organism
 
@@ -218,35 +239,32 @@ Deletes a Organism from the database.
 ### Example Usage
 
 ```python
-import pazy
-from pazy.models import components
+from pypazy import Pazy
+from pypazy.models import components
 
-s = pazy.Pazy(
+s = Pazy(
     security=components.Security(
-        username="<YOUR_USERNAME_HERE>",
+        username="",
+        password="",
     ),
 )
 
 
-res = s.organisms.delete_organism(id='<value>')
+s.organisms.delete_organism(id="<value>")
 
-if res.status_code == 200:
-    # handle response
-    pass
+# Use the SDK ...
+
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *str*              | :heavy_check_mark: | N/A                |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `id`                                                                | *str*                                                               | :heavy_check_mark:                                                  | N/A                                                                 |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
-
-### Response
-
-**[operations.DeleteOrganismResponse](../../models/operations/deleteorganismresponse.md)**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4x-5xx          | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
